@@ -23,5 +23,22 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:23-alpine'
+                    reuseNode true
+                }
+            }
+            environment {
+                npm_config_cache = 'npm-cache'
+            }
+            steps {
+                sh '''
+                    test -f build/index.html
+                '''
+            }
+
+        }
     }
 }
