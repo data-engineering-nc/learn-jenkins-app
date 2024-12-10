@@ -90,11 +90,13 @@ pipeline {
                     reuseNode true
                 }
             }
-
+            environment {
+                npm_config_cache = 'npm-cache'
+            }
             steps {
                 sh '''
-                    npm install netlify-cli
-                    node_modules/.bin/netlify --version
+                    npm install netlify-cli -g
+                    netlify --version
                 '''
             }
         }
