@@ -97,12 +97,6 @@ pipeline {
                     mkdir -p /var/jenkins_home
                     chown 987:987 /var/jenkins_home
                     export HOME=/var/jenkins_home
-                '''
-            }
-            steps {
-                sh '''
-                    id
-                    cat /etc/passwd
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                 '''
