@@ -87,18 +87,12 @@ pipeline {
             agent {
                 docker {
                     image 'node:18-alpine'
-                    args "-v /etc/passwd:/etc/passwd"
                     reuseNode true
                 }
             }
-            environment {
-                npm_config_cache = 'npm-cache'
-            }
+
             steps {
                 sh '''
-                    which node
-                    which npm
-                    echo $PATH
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                 '''
