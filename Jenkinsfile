@@ -95,6 +95,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    apk add --update nodejs nodejs-npm
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                 '''
