@@ -97,6 +97,7 @@ pipeline {
                 sh '''
                     which node
                     which npm
+                    echo $PATH
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                 '''
