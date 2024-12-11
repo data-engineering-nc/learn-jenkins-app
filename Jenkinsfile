@@ -100,7 +100,7 @@ pipeline {
                     ls -la
                     ls -la node_modules/.bin/
                     ls -la /var/lib/jenkins/
-                    netlify --version
+                    node_modules/.bin/netlify --version
                 '''
             }
         }
