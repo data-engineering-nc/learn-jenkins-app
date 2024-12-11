@@ -97,6 +97,11 @@ pipeline {
             steps {
                 sh '''
                     npm install netlify-cli
+                    ls -la
+                    ls -la node_modules/
+                    ls -la node_modules/.bin/
+                    ls -la /var/lib/jenkins/
+                    ls -la /var/lib/jenkins/.config/
                     node_modules/.bin/netlify --version
                 '''
             }
