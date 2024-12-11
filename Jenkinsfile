@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+        /*
         stage('Build') {
             agent {
                 docker {
@@ -80,11 +81,13 @@ pipeline {
                 }
             }
         }
+        */
 
         stage('Deploy') {
             agent {
                 docker {
                     image 'node:current-alpine'
+                    args "-v /etc/passwd:/etc/passwd"
                     reuseNode true
                 }
             }
