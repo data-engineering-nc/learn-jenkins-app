@@ -87,7 +87,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:current-alpine'
-                    args "-v /etc/passwd:/etc/passwd"
+                    args "-v /etc/passwd:/etc/passwd -v /var/lib/jenkins/:/var/lib/jenkins/"
                     reuseNode true
                 }
             }
