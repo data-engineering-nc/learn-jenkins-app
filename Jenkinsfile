@@ -101,8 +101,9 @@ pipeline {
                     ls -la node_modules/.bin/
                     ls -la node_modules/netlify-cli/
                     ls -la node_modules/netlify-cli/bin/
-                    ls -la node_modules/netlify-cli/node_modules/
-                    node_modules/netlify-cli/bin/netlify --version
+                    ls -la node_modules/netlify-cli/node_modules/netlify/
+                    cat node_modules/netlify-cli/bin/run.js
+                    node_modules/netlify-cli/node_modules/netlify/bin/netlify --version
                 '''
             }
         }
