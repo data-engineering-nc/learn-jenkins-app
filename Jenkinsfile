@@ -96,7 +96,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    npm install netlify-cli -g
+                    npm install netlify-cli
                     ls -la
                     ls -la node_modules/
                     ls -la node_modules/.bin/
