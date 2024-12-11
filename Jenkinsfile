@@ -84,7 +84,7 @@ pipeline {
         stage('Deploy') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'node:current-alpine'
                     reuseNode true
                 }
             }
@@ -93,10 +93,6 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo "jenkins:x:987:987:Jenkins:/var/jenkins_home:/bin/sh" >> /etc/passwd
-                    mkdir -p /var/jenkins_home
-                    chown 987:987 /var/jenkins_home
-                    export HOME=/var/jenkins_home
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                 '''
