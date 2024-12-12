@@ -85,8 +85,30 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy staging') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    args "-v /etc/passwd:/etc/passwd -v /var/lib/jenkins/:/var/lib/jenkins/"
+                    reuseNode true
+                }
+            }
+            environment {
+                npm_config_cache = 'npm-cache'
+            }
+            steps {
+                sh '''
+                    npm install netlify-cli
+                    node_modules/.bin/netlify --version
+                    echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
+                    node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --dir=build
+                '''
+            }
+        }
 
-        stage('Deploy') {
+        stage('Deploy prod') {
             agent {
                 docker {
                     image 'node:18-alpine'
