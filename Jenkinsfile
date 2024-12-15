@@ -90,6 +90,7 @@ pipeline {
             agent {
                 docker {
                     image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                    args  "-v /etc/passwd:/etc/passwd -v /var/lib/jenkins/:/var/lib/jenkins/"
                     reuseNode true
                 }
             }
